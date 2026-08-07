@@ -133,13 +133,13 @@ const MovieDetailsContent = ({ id }: { id: string }) => {
                     <img
                       src={actor.image}
                       alt={actor.name}
-                      className="w-24 h-24 rounded-xl object-cover"
+                      className="w-24 h-24 rounded-xl object-cover shrink-0"
                     />
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1 text-white">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-semibold text-lg mb-1 text-white truncate" title={actor.name}>
                         {actor.name}
                       </h3>
-                      <p className="text-zinc-400 mb-2">{actor.role}</p>
+                      <p className="text-zinc-400 mb-2 truncate" title={actor.role}>{actor.role}</p>
                     </div>
                   </div>
                 ))}
