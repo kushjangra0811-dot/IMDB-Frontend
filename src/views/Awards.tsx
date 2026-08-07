@@ -45,7 +45,7 @@ const Awards = () => {
           <div className="text-red-500 mb-8">Failed to load movies. Please try again.</div>
         )}
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-8">
           {isLoading ? (
             Array.from({ length: 6 }).map((_, i) => <MovieCardSkeleton key={i} />)
           ) : (
@@ -76,7 +76,7 @@ const Awards = () => {
                       </h2>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-gray-400">{movie.year}</span>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                           {movie.genre.slice(0, 2).map((g) => (
                             <span key={g} className="text-xs px-2 py-1 bg-zinc-800 rounded-full text-zinc-300">
                               {g}
