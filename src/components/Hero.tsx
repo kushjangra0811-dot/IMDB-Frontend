@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const featuredMovies = [
   {
-    id: 1,
+    id: 693134,
     title: "Dune: Part Two",
     rating: 8.8,
     releaseDate: "March 1, 2024",
@@ -15,7 +15,7 @@ const featuredMovies = [
       "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?auto=format&fit=crop&w=2000&q=80",
   },
   {
-    id: 2,
+    id: 872585,
     title: "Oppenheimer",
     rating: 8.9,
     releaseDate: "July 21, 2023",
@@ -69,7 +69,7 @@ const Hero = () => {
           <p className="text-zinc-300 text-lg mb-8 line-clamp-3 max-w-xl">
             {movie.description}
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <Link
               href={`/movie/${movie.id}`}
               className="bg-yellow-500 text-black px-8 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-yellow-400 transition-all hover:scale-105 duration-300"
