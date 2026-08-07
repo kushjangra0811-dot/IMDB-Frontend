@@ -3,8 +3,8 @@ import React from "react";
 
 const MovieCard = ({ title, rating, image, year, genre }) => {
   return (
-    <div className="bg-zinc-900/50 rounded-xl overflow-hidden movie-card-hover backdrop-blur-sm max-w-sm mx-auto w-full">
-      <div className="relative aspect-[3/4] sm:aspect-[2/3]">
+    <div className="bg-zinc-900/50 rounded-xl overflow-hidden movie-card-hover backdrop-blur-sm">
+      <div className="relative aspect-[2/3]">
         <img
           src={image}
           alt={title}
@@ -17,15 +17,15 @@ const MovieCard = ({ title, rating, image, year, genre }) => {
             </button>
           </div>
         </div>
-        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 z-10">
-          <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-500 fill-current" />
-          <span className="text-yellow-500 font-medium text-sm">{rating}</span>
+        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1">
+          <Star className="w-4 h-4 text-yellow-500 fill-current" />
+          <span className="text-yellow-500 font-medium">{rating}</span>
         </div>
       </div>
-      <div className="p-4">
+      <div className="p-4 overflow-hidden">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="font-semibold text-lg truncate text-glow">{title}</h3>
-          <span className="text-zinc-400 text-sm">{year}</span>
+          <h3 className="font-semibold text-lg truncate text-glow flex-1 min-w-0 pr-2">{title}</h3>
+          <span className="text-zinc-400 text-sm shrink-0">{year}</span>
         </div>
         {genre && (
           <div className="flex flex-wrap gap-2">

@@ -1,7 +1,6 @@
 import { getActorDetails } from "../../../src/lib/api/mockActorApi";
 import FilmographyExplorer from "../../../src/components/FilmographyExplorer";
-import Image from "next/image";
-import { Star, Award as AwardIcon } from "lucide-react";
+import { Star, Award, Instagram, Twitter } from "lucide-react";
 
 export const runtime = 'edge';
 export const revalidate = 3600;
@@ -30,48 +29,111 @@ export default async function ActorPage({ params }: { params: { id: string } }) 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="relative h-[400px] mb-8 overflow-hidden">
-        <Image 
-          src={actor.coverImage} 
-          alt={`${actor.name} cover`} 
-          fill 
-          priority 
-          className="object-cover" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-        <div className="relative h-full container mx-auto px-4 flex items-end pb-8">
-          <div className="flex flex-col sm:flex-row items-end gap-8">
-            <div className="w-48 h-48 relative rounded-xl overflow-hidden border-4 border-gray-900 shrink-0">
-              <Image src={actor.image} alt={actor.name} fill priority className="object-cover" />
-            </div>
-            <div className="pb-2">
-              <h1 className="text-4xl font-bold mb-4">{actor.name}</h1>
-              <div className="flex flex-wrap items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 text-yellow-500 fill-current" />
-                  <span>{actor.stats.avgRating} Average Rating</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <AwardIcon className="w-5 h-5 text-purple-500" />
-                  <span>{actor.stats.totalAwards} Awards</span>
-                </div>
-                <div className="text-gray-400 border-l border-gray-700 pl-6">
-                  {actor.birthPlace}
+      <div className="container mx-auto px-4 py-8">
+        <div className="relative h-[400px] mb-8 rounded-xl overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${actor.knownFor[0]?.image || actor.coverImage})` }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80" />
+          </div>
+          <div className="relative h-full container flex items-end pb-8">
+            <div className="flex items-end gap-8">
+              <img
+                src={actor.image}
+                alt={actor.name}
+                className="w-48 h-48 rounded-xl object-cover border-4 border-gray-900"
+              />
+              <div>
+                <h1 className="text-4xl font-bold mb-4">{actor.name}</h1>
+                <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 text-yellow-500 fill-current" />
+                    <span>{actor.stats.avgRating} Average Rating</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Award className="w-5 h-5 text-purple-500" />
+                    <span>{actor.stats.totalAwards} Awards</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <div className="container mx-auto px-4 py-8">
-        <section className="mb-12 max-w-4xl">
-          <h2 className="text-2xl font-bold mb-4">Biography</h2>
-          <p className="text-gray-300 text-lg leading-relaxed">{actor.biography}</p>
-        </section>
-        
-        {/* Filmography Explorer Component */}
-        <FilmographyExplorer actorId={actor.id.toString()} initialMovies={actor.knownFor} />
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div>
+            <div className="sticky top-24 space-y-6">
+              <div className="bg-gray-800 rounded-xl p-6">
+                <h2 className="font-semibold mb-4">Personal Info</h2>
+                <dl className="space-y-4">
+                  <div>
+                    <dt className="text-gray-400">Born</dt>
+                    <dd>{actor.birthDate}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-gray-400">Place of Birth</dt>
+                    <dd>{actor.birthPlace}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-gray-400">Movies</dt>
+                    <dd>{actor.stats.moviesCount} titles</dd>
+                  </div>
+                </dl>
+              </div>
+              <div className="bg-gray-800 rounded-lg p-6">
+                <h2 className="font-semibold mb-4">Social Media</h2>
+                <div className="flex gap-4">
+                  <a
+                    href={actor.socialMedia.instagram}
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <Instagram className="w-6 h-6" />
+                  </a>
+                  <a
+                    href={actor.socialMedia.twitter}
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <Twitter className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:col-span-2">
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold mb-4">Biography</h2>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                {actor.biography}
+              </p>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold mb-4">Awards & Nominations</h2>
+              <div className="grid gap-4">
+                {actor.awards.map((award: any, index: number) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 bg-gray-800 p-4 rounded-xl"
+                  >
+                    <Award className="w-5 h-5 text-yellow-500" />
+                    <div>
+                      <span className="font-semibold">{award.name}</span>
+                      <span className="mx-2">|</span>
+                      <span>{award.year}</span>
+                      <p className="text-sm text-gray-400">
+                        {award.category} - {award.film}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <FilmographyExplorer initialMovies={actor.knownFor} />
+          </div>
+        </div>
       </div>
     </>
   );

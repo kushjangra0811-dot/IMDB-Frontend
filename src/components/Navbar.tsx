@@ -24,7 +24,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-black/70 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
+    <nav className="bg-black md:bg-black/70 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 hover-glow">

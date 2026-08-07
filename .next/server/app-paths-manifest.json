@@ -1,13 +1,13 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/awards/page": "app/awards/page.js",
-  "/movie/[id]/page": "app/movie/[id]/page.js",
   "/coming-soon/page": "app/coming-soon/page.js",
+  "/movie/[id]/page": "app/movie/[id]/page.js",
+  "/movies/page": "app/movies/page.js",
   "/page": "app/page.js",
   "/top-rated/page": "app/top-rated/page.js",
-  "/movies/page": "app/movies/page.js",
-  "/actor/[id]/@awards/page": "app/actor/[id]/@awards/page.js",
-  "/actor/[id]/@similar/page": "app/actor/[id]/@similar/page.js",
   "/actor/[id]/@social/page": "app/actor/[id]/@social/page.js",
+  "/actor/[id]/@similar/page": "app/actor/[id]/@similar/page.js",
+  "/actor/[id]/@awards/page": "app/actor/[id]/@awards/page.js",
   "/actor/[id]/page": "app/actor/[id]/page.js"
 }

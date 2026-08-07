@@ -46,20 +46,49 @@ const Toprated = () => {
           <div className="text-red-500 mb-8">Failed to load top rated movies.</div>
         )}
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-8 mb-8">
+        <div className="space-y-6 mb-8">
           {isLoading ? (
-            Array.from({ length: 6 }).map((_, i) => <MovieCardSkeleton key={i} />)
+            Array.from({ length: 5 }).map((_, i) => (
+              <div key={i} className="animate-pulse bg-zinc-900 rounded-xl h-48 w-full" />
+            ))
           ) : (
             data?.pages.flatMap((page, pageIndex) => 
-              page.results.map((movie) => (
-                <Link 
-                  key={`${pageIndex}-${movie.id}`} 
-                  href={`/movie/${movie.id}`}
-                  onMouseEnter={() => handleMouseEnter(movie.id)}
-                  className="block"
-                >
-                  <MovieCard {...movie} />
-                </Link>
+              page.results.map((movie, index) => (
+                <div key={`${pageIndex}-${movie.id}`}>
+                  <Link href={`/movie/${movie.id}`} onMouseEnter={() => handleMouseEnter(movie.id)}>
+                    <div className="bg-white dark:bg-zinc-900 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                      <div className="flex flex-col sm:flex-row">
+                        <div className="w-full sm:w-16 bg-yellow-500 flex items-center justify-center text-black font-bold text-xl py-2 sm:py-0">
+                          #{pageIndex * 20 + index + 1}
+                        </div>
+                        <div className="relative w-full sm:w-48 aspect-[2/3] sm:aspect-auto">
+                          <img
+                            src={movie.image}
+                            alt={movie.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="flex-1 p-4 sm:p-6 min-w-0">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2 sm:gap-0">
+                            <h2 className="text-xl font-semibold text-zinc-900 dark:text-white truncate">
+                              {movie.title}
+                            </h2>
+                            <div className="flex items-center gap-1 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded-full w-fit">
+                              <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                              <span className="text-sm font-medium text-zinc-900 dark:text-white">
+                                {movie.rating}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="text-zinc-400 dark:text-zinc-400">
+                            <span>{movie.year}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               ))
             )
           )}

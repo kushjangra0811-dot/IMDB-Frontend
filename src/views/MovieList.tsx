@@ -61,7 +61,37 @@ const MovieList = () => {
                   onMouseEnter={() => handleMouseEnter(movie.id)}
                   className="block"
                 >
-                  <MovieCard {...movie} />
+                  <div className="bg-gray-900 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+                    <div className="relative aspect-video">
+                      <img
+                        src={movie.image}
+                        alt={movie.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1">
+                        <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                        <span className="text-yellow-500 font-medium">
+                          {movie.rating}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-4 overflow-hidden">
+                      <h2 className="text-xl font-semibold justify-between mb-2 truncate">
+                        {movie.title}
+                      </h2>
+                      <div className="flex items-center justify-between mb-2 min-w-0">
+                        <span className="text-gray-400 shrink-0">{movie.year}</span>
+                        <div className="flex gap-2 flex-wrap justify-end">
+                          {movie.genre?.slice(0, 2).map((g) => (
+                            <span key={g} className="text-xs px-2 py-1 bg-zinc-800 rounded-full text-zinc-300">
+                              {g}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </Link>
               ))
             )
