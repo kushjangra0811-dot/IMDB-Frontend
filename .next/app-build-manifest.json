@@ -12,10 +12,10 @@
       "static/chunks/fd9d1056-799639e3a29ca4b9.js",
       "static/chunks/30-c61f2375d55b7992.js",
       "static/chunks/main-app-616c65f7d5c35c60.js",
-      "static/css/87a7d17b8c807c5b.css",
+      "static/css/77da04fca4345f49.css",
       "static/chunks/972-057b27f374ca2088.js",
       "static/chunks/366-ef707904f348bb17.js",
-      "static/chunks/app/layout-1997bb4c1e348ad8.js"
+      "static/chunks/app/layout-209be130000b1a85.js"
     ],
     "/awards/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
@@ -26,9 +26,9 @@
       "static/chunks/366-ef707904f348bb17.js",
       "static/chunks/944-6ec8dea9fe95208a.js",
       "static/chunks/493-2068dbda7ad8c1a4.js",
-      "static/chunks/app/awards/page-6b0add0263e10cc5.js"
+      "static/chunks/app/awards/page-fb1876a415088155.js"
     ],
-    "/coming-soon/page": [
+    "/movies/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
       "static/chunks/fd9d1056-799639e3a29ca4b9.js",
       "static/chunks/30-c61f2375d55b7992.js",
@@ -36,8 +36,7 @@
       "static/chunks/972-057b27f374ca2088.js",
       "static/chunks/366-ef707904f348bb17.js",
       "static/chunks/944-6ec8dea9fe95208a.js",
-      "static/chunks/493-2068dbda7ad8c1a4.js",
-      "static/chunks/app/coming-soon/page-c951966b10aa3e99.js"
+      "static/chunks/app/movies/page-e1207871471cd1a8.js"
     ],
     "/movie/[id]/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
@@ -56,16 +55,6 @@
       "static/chunks/main-app-616c65f7d5c35c60.js",
       "static/chunks/app/movie/[id]/loading-3b3d641e1a26eb91.js"
     ],
-    "/movies/page": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
-      "static/chunks/30-c61f2375d55b7992.js",
-      "static/chunks/main-app-616c65f7d5c35c60.js",
-      "static/chunks/972-057b27f374ca2088.js",
-      "static/chunks/366-ef707904f348bb17.js",
-      "static/chunks/944-6ec8dea9fe95208a.js",
-      "static/chunks/app/movies/page-54bc13e67f4a26f0.js"
-    ],
     "/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
       "static/chunks/fd9d1056-799639e3a29ca4b9.js",
@@ -74,7 +63,18 @@
       "static/chunks/972-057b27f374ca2088.js",
       "static/chunks/366-ef707904f348bb17.js",
       "static/chunks/944-6ec8dea9fe95208a.js",
-      "static/chunks/app/page-635f67a8686e977b.js"
+      "static/chunks/app/page-26f234063fc9a804.js"
+    ],
+    "/coming-soon/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
+      "static/chunks/30-c61f2375d55b7992.js",
+      "static/chunks/main-app-616c65f7d5c35c60.js",
+      "static/chunks/972-057b27f374ca2088.js",
+      "static/chunks/366-ef707904f348bb17.js",
+      "static/chunks/944-6ec8dea9fe95208a.js",
+      "static/chunks/493-2068dbda7ad8c1a4.js",
+      "static/chunks/app/coming-soon/page-f55034a338caece6.js"
     ],
     "/top-rated/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
@@ -85,7 +85,7 @@
       "static/chunks/366-ef707904f348bb17.js",
       "static/chunks/944-6ec8dea9fe95208a.js",
       "static/chunks/493-2068dbda7ad8c1a4.js",
-      "static/chunks/app/top-rated/page-fa3bf4b6241d7c41.js"
+      "static/chunks/app/top-rated/page-37cf92f69ca5e2e4.js"
     ],
     "/actor/[id]/@awards/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",

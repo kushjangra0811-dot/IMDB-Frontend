@@ -126,22 +126,23 @@ const MovieDetailsContent = ({ id }: { id: string }) => {
               <h2 className="text-2xl font-bold mb-6 text-white">Top Cast</h2>
               <div className="grid grid-cols-2 gap-6">
                 {movie.cast.map((actor: any, index: number) => (
-                  <div
-                    key={index}
-                    className="bg-zinc-800/50 backdrop-blur-sm rounded-lg p-4 flex gap-4"
-                  >
-                    <img
-                      src={actor.image}
-                      alt={actor.name}
-                      className="w-24 h-24 rounded-xl object-cover"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1 text-white">
-                        {actor.name}
-                      </h3>
-                      <p className="text-zinc-400 mb-2">{actor.role}</p>
+                  <Link href={`/actor/${actor.id || index}`} key={index}>
+                    <div
+                      className="bg-zinc-800/50 backdrop-blur-sm rounded-lg p-4 flex gap-4 hover:bg-zinc-700/50 transition-colors"
+                    >
+                      <img
+                        src={actor.image}
+                        alt={actor.name}
+                        className="w-24 h-24 rounded-xl object-cover"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-lg mb-1 text-white">
+                          {actor.name}
+                        </h3>
+                        <p className="text-zinc-400 mb-2">{actor.role}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
                 {movie.cast.length === 0 && (
                   <p className="text-zinc-400 col-span-2">No cast information available.</p>
