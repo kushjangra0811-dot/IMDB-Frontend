@@ -1,1 +1,10 @@
-{}
+{
+  "/Actordetails": "pages/Actordetails.js",
+  "/Home": "pages/Home.js",
+  "/MovieDetails": "pages/MovieDetails.js",
+  "/MovieList": "pages/MovieList.js",
+  "/Toprated": "pages/Toprated.js",
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js"
+}

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { Suspense } from "react";
-import Hero from "../components/Hero.tsx";
+import Hero from "../components/Hero";
 import { Award, Clock, Star, TrendingUp } from "lucide-react";
 import Link from "next/link";
-import MovieCarousel from "../components/MovieCarousel.tsx";
+import MovieCarousel from "../components/MovieCarousel";
 import { useTrendingMovies, useUpcomingMovies } from "../hooks/useMovies";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 

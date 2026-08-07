@@ -3,7 +3,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import Link from "next/link";
-import MovieCard from "./MovieCard.tsx";
+import MovieCard from "./MovieCard";
 import { queryClient } from "../lib/queryClient";
 import { getMovieDetails } from "../lib/api/tmdbClient";
 import MovieCardSkeleton from "./skeletons/MovieCardSkeleton";
