@@ -3,8 +3,8 @@ import React from "react";
 
 const MovieCard = ({ title, rating, image, year, genre }) => {
   return (
-    <div className="bg-zinc-900/50 rounded-xl overflow-hidden movie-card-hover backdrop-blur-sm">
-      <div className="relative aspect-[2/3]">
+    <div className="bg-zinc-900/50 rounded-xl overflow-hidden movie-card-hover backdrop-blur-sm max-w-sm mx-auto w-full">
+      <div className="relative aspect-[3/4] sm:aspect-[2/3]">
         <img
           src={image}
           alt={title}

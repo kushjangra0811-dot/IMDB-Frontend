@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-black text-white overflow-x-hidden;
+  html, body {
+    @apply bg-black text-white;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 }
 
@@ -49,7 +51,15 @@
   box-shadow: 0 8px 20px -8px rgba(255, 255, 255, 0.3);
 }
 
-/* Reduce motion for users who prefer it & optimize mobile */
+/* Disable hover lift on touch devices to prevent navbar overlap */
+@media (hover: none) {
+  .movie-card-hover:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .movie-card-hover,
   .movie-card-hover:hover {
@@ -63,4 +73,10 @@
 [class*="overflow-x-auto"] {
   -webkit-overflow-scrolling: touch;
   transform: translateZ(0);
+}
+
+/* Ensure images never overflow their containers */
+img, video {
+  max-width: 100%;
+  height: auto;
 }
