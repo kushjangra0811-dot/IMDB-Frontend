@@ -17,9 +17,9 @@ const MovieCard = ({ title, rating, image, year, genre }) => {
             </button>
           </div>
         </div>
-        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1">
-          <Star className="w-4 h-4 text-yellow-500 fill-current" />
-          <span className="text-yellow-500 font-medium">{rating}</span>
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 z-10">
+          <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-500 fill-current" />
+          <span className="text-yellow-500 font-medium text-sm">{rating}</span>
         </div>
       </div>
       <div className="p-4">

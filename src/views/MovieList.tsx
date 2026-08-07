@@ -34,7 +34,7 @@ const MovieList = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-5 sm:px-6 lg:px-8 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">
           {search ? `Search Results for "${search}"` : "Popular Movies"}

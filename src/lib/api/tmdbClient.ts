@@ -36,15 +36,22 @@ export interface Movie {
   genre: string[]; // map from genre_ids
 }
 
+const GENRE_MAP: Record<number, string> = {
+  28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime',
+  99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History',
+  27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Sci-Fi',
+  10770: 'TV Movie', 53: 'Thriller', 10752: 'War', 37: 'Western',
+};
+
 const mapTMDBMovie = (movie: any): Movie => ({
   id: movie.id,
   title: movie.title || movie.name,
   rating: movie.vote_average ? Number(movie.vote_average.toFixed(1)) : 0,
   image: movie.poster_path 
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : 'https://images.unsplash.com/photo-1534809027769-b00d750a6bac?auto=format&fit=crop&w=800&q=80', // Fallback
+    : 'https://images.unsplash.com/photo-1534809027769-b00d750a6bac?auto=format&fit=crop&w=800&q=80',
   year: movie.release_date ? new Date(movie.release_date).getFullYear() : 2024,
-  genre: ['Action'], // TMDB returns genre_ids, mapping them perfectly requires another API call for the genre list, simplifying here to not overcomplicate, or we can just return strings if we map them.
+  genre: (movie.genre_ids || []).map((id: number) => GENRE_MAP[id] || 'Other').slice(0, 3),
 });
 
 // Cursor-based fetching for lists

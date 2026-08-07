@@ -124,27 +124,27 @@ const MovieDetailsContent = ({ id }: { id: string }) => {
 
             <section>
               <h2 className="text-2xl font-bold mb-6 text-white">Top Cast</h2>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {movie.cast.map((actor: any, index: number) => (
                   <div
                     key={index}
-                    className="bg-zinc-800/50 backdrop-blur-sm rounded-lg p-4 flex gap-4"
+                    className="bg-zinc-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 flex gap-3 sm:gap-4"
                   >
                     <img
                       src={actor.image}
                       alt={actor.name}
-                      className="w-24 h-24 rounded-xl object-cover shrink-0"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover shrink-0"
                     />
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-semibold text-lg mb-1 text-white truncate" title={actor.name}>
+                      <h3 className="font-semibold text-base sm:text-lg mb-1 text-white truncate" title={actor.name}>
                         {actor.name}
                       </h3>
-                      <p className="text-zinc-400 mb-2 truncate" title={actor.role}>{actor.role}</p>
+                      <p className="text-zinc-400 text-sm sm:text-base truncate" title={actor.role}>{actor.role}</p>
                     </div>
                   </div>
                 ))}
                 {movie.cast.length === 0 && (
-                  <p className="text-zinc-400 col-span-2">No cast information available.</p>
+                  <p className="text-zinc-400 col-span-full">No cast information available.</p>
                 )}
               </div>
             </section>

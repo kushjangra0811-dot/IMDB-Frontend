@@ -40,9 +40,27 @@
 
 .movie-card-hover {
   @apply transition-all duration-300;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .movie-card-hover:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 20px -8px rgba(255, 255, 255, 0.3);
+}
+
+/* Reduce motion for users who prefer it & optimize mobile */
+@media (prefers-reduced-motion: reduce) {
+  .movie-card-hover,
+  .movie-card-hover:hover {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* GPU-accelerate scrollable containers */
+.hide-scrollbar,
+[class*="overflow-x-auto"] {
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
 }
