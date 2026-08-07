@@ -1,6 +1,6 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { getTrendingMovies } from '../../src/lib/api/tmdbClient';
-import MovieListClient from '../../src/Pages/MovieList';
+import MovieListClient from '../../src/views/MovieList';
 import { Suspense } from 'react';
 
 export default async function MoviesPage() {

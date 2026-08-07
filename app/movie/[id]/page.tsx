@@ -1,6 +1,6 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { getMovieDetails } from '../../../src/lib/api/tmdbClient';
-import MovieDetailsClient from '../../../src/Pages/MovieDetails';
+import MovieDetailsClient from '../../../src/views/MovieDetails';
 
 export default async function MoviePage({ params }: { params: { id: string } }) {
   const queryClient = new QueryClient();

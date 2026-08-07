@@ -1,6 +1,6 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { getTopRatedMovies } from '../../src/lib/api/tmdbClient';
-import TopratedClient from '../../src/Pages/Toprated';
+import TopratedClient from '../../src/views/Toprated';
 import { Suspense } from 'react';
 
 export default async function TopRatedPage() {
