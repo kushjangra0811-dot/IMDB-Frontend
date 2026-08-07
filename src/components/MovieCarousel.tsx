@@ -4,11 +4,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import Link from "next/link";
 import MovieCard from "./MovieCard";
-import { queryClient } from "../lib/queryClient";
-import { getMovieDetails } from "../lib/api/tmdbClient";
-import MovieCardSkeleton from "./skeletons/MovieCardSkeleton";
 
-const MovieCarousel = ({ movies, isLoading = false }) => {
+const MovieCarousel = ({ movies }: { movies: any[] }) => {
   const [startIndex, setStartIndex] = useState(0);
   const visibleMovies = 4;
 
@@ -26,26 +23,6 @@ const MovieCarousel = ({ movies, isLoading = false }) => {
     );
   };
 
-  const handleMouseEnter = (id) => {
-    queryClient.prefetchQuery({
-      queryKey: ['movie', String(id)],
-      queryFn: () => getMovieDetails(String(id)),
-      staleTime: 1000 * 60 * 60, // 1 hour
-    });
-  };
-
-  if (isLoading) {
-    return (
-      <div className="flex gap-4 overflow-hidden">
-        {Array.from({ length: visibleMovies }).map((_, i) => (
-          <div key={i} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 p-2">
-            <MovieCardSkeleton />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   if (!movies || movies.length === 0) return null;
 
   return (
@@ -61,7 +38,6 @@ const MovieCarousel = ({ movies, isLoading = false }) => {
             <div
               key={movie.id}
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 p-2"
-              onMouseEnter={() => handleMouseEnter(movie.id)}
             >
               <Link href={`/movie/${movie.id}`}>
                 <MovieCard {...movie} />
@@ -77,13 +53,13 @@ const MovieCarousel = ({ movies, isLoading = false }) => {
             onClick={prevSlide}
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-6 h-6 text-white" />
           </button>
           <button
             onClick={nextSlide}
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-6 h-6 text-white" />
           </button>
         </>
       )}
