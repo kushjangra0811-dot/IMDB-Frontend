@@ -12,7 +12,7 @@ const featuredMovies = [
     description:
       "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.",
     image:
-      "https://images.unsplash.com/photo-1542382257-80da9fb9f5f5?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=2000&q=80",
   },
   {
     id: 2,
