@@ -12,10 +12,30 @@
       "static/chunks/fd9d1056-799639e3a29ca4b9.js",
       "static/chunks/117-22f8b05d4b1d5ec3.js",
       "static/chunks/main-app-25e66932c868ea29.js",
-      "static/css/b060ccf68511c4d7.css",
+      "static/css/061b32f360a7f1b2.css",
       "static/chunks/972-057b27f374ca2088.js",
       "static/chunks/366-ef707904f348bb17.js",
       "static/chunks/app/layout-d65ce2cac922a15c.js"
+    ],
+    "/movies/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
+      "static/chunks/117-22f8b05d4b1d5ec3.js",
+      "static/chunks/main-app-25e66932c868ea29.js",
+      "static/chunks/972-057b27f374ca2088.js",
+      "static/chunks/366-ef707904f348bb17.js",
+      "static/chunks/250-84e78a5746e4469f.js",
+      "static/chunks/app/movies/page-bbff3ba4edac684e.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
+      "static/chunks/117-22f8b05d4b1d5ec3.js",
+      "static/chunks/main-app-25e66932c868ea29.js",
+      "static/chunks/972-057b27f374ca2088.js",
+      "static/chunks/366-ef707904f348bb17.js",
+      "static/chunks/250-84e78a5746e4469f.js",
+      "static/chunks/app/page-9573a981336a6b1b.js"
     ],
     "/awards/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
@@ -28,23 +48,6 @@
       "static/chunks/946-d8b79a6963fe0f3d.js",
       "static/chunks/app/awards/page-394a1c0173ccff98.js"
     ],
-    "/movie/[id]/page": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
-      "static/chunks/117-22f8b05d4b1d5ec3.js",
-      "static/chunks/main-app-25e66932c868ea29.js",
-      "static/chunks/972-057b27f374ca2088.js",
-      "static/chunks/366-ef707904f348bb17.js",
-      "static/chunks/250-84e78a5746e4469f.js",
-      "static/chunks/app/movie/[id]/page-2214ba4ba33e8c83.js"
-    ],
-    "/movie/[id]/loading": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
-      "static/chunks/117-22f8b05d4b1d5ec3.js",
-      "static/chunks/main-app-25e66932c868ea29.js",
-      "static/chunks/app/movie/[id]/loading-dc5896ce752af1bc.js"
-    ],
     "/top-rated/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
       "static/chunks/fd9d1056-799639e3a29ca4b9.js",
@@ -55,7 +58,7 @@
       "static/chunks/250-84e78a5746e4469f.js",
       "static/chunks/app/top-rated/page-74634140b85f3a77.js"
     ],
-    "/movies/page": [
+    "/movie/[id]/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
       "static/chunks/fd9d1056-799639e3a29ca4b9.js",
       "static/chunks/117-22f8b05d4b1d5ec3.js",
@@ -63,7 +66,14 @@
       "static/chunks/972-057b27f374ca2088.js",
       "static/chunks/366-ef707904f348bb17.js",
       "static/chunks/250-84e78a5746e4469f.js",
-      "static/chunks/app/movies/page-bbff3ba4edac684e.js"
+      "static/chunks/app/movie/[id]/page-d37953363a3be46f.js"
+    ],
+    "/movie/[id]/loading": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
+      "static/chunks/117-22f8b05d4b1d5ec3.js",
+      "static/chunks/main-app-25e66932c868ea29.js",
+      "static/chunks/app/movie/[id]/loading-dc5896ce752af1bc.js"
     ],
     "/coming-soon/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",
@@ -74,16 +84,6 @@
       "static/chunks/366-ef707904f348bb17.js",
       "static/chunks/250-84e78a5746e4469f.js",
       "static/chunks/app/coming-soon/page-cccc903419ec05e9.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-799639e3a29ca4b9.js",
-      "static/chunks/117-22f8b05d4b1d5ec3.js",
-      "static/chunks/main-app-25e66932c868ea29.js",
-      "static/chunks/972-057b27f374ca2088.js",
-      "static/chunks/366-ef707904f348bb17.js",
-      "static/chunks/250-84e78a5746e4469f.js",
-      "static/chunks/app/page-d44ec0c4e52d7c6a.js"
     ],
     "/actor/[id]/@awards/page": [
       "static/chunks/webpack-c81f7fd28659d64f.js",

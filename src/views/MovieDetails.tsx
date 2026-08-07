@@ -29,9 +29,9 @@ const MovieDetails = () => {
       description:
         "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he endeavors to prevent a terrible future only he can foresee.",
       image:
-        "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1542382257-80da9fb9f5f5?auto=format&fit=crop&w=2000&q=80",
       backdrop:
-        "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=2000&q=80",
       cast: [
         {
           id: 1,
@@ -143,44 +143,44 @@ const MovieDetails = () => {
     },
     {
       id: 4,
-      title: "The Zone of Interest",
-      rating: 7.9,
-      year: 2023,
-      duration: "105 min",
-      genre: ["Drama", "History", "War"],
-      director: "Jonathan Glazer",
+      title: "Spider-Man: No Way Home",
+      rating: 8.2,
+      year: 2021,
+      duration: "148 min",
+      genre: ["Action", "Adventure", "Sci-Fi"],
+      director: "Jon Watts",
       description:
-        "The commandant of Auschwitz, Rudolf Höss, and his wife Hedwig, strive to build a dream life for their family in a house and garden next to the camp.",
+        "With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.",
       image:
-        "https://images.unsplash.com/photo-1533928298208-27ff66555d8d?auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=2000&q=80",
       backdrop:
-        "https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?auto=format&fit=crop&w=2000&q=80",
+        "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=2000&q=80",
       cast: [
         {
-          id: 7,
-          name: "Christian Friedel",
-          role: "Rudolf Höss",
+          id: 10,
+          name: "Tom Holland",
+          role: "Peter Parker / Spider-Man",
           image:
-            "https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=200&q=80",
-          bio: "German actor and musician",
+            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80",
+          bio: "English actor, best known for his role as Spider-Man.",
         },
         {
-          id: 8,
-          name: "Sandra Hüller",
-          role: "Hedwig Höss",
+          id: 2,
+          name: "Zendaya",
+          role: "MJ",
           image:
-            "https://images.unsplash.com/photo-1557296387-5358ad7997bb?auto=format&fit=crop&w=200&q=80",
-          bio: "Award-winning German actress",
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+          bio: "Multi-talented actress and fashion icon",
         },
       ],
       trailer: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      awards: ["Academy Award Winner", "Cannes Film Festival Winner"],
-      boxOffice: "$27.1M",
-      language: "German",
-      productionCompany: "A24",
-      releaseDate: "2024-01-31",
-      metacriticScore: 94,
-      rottenTomatoesScore: 91,
+      awards: ["Academy Award Nominee", "Saturn Award Winner"],
+      boxOffice: "$1.92B",
+      language: "English",
+      productionCompany: "Marvel Studios",
+      releaseDate: "2021-12-17",
+      metacriticScore: 71,
+      rottenTomatoesScore: 93,
     },
   ];
   const params = useParams();
@@ -297,7 +297,7 @@ const MovieDetails = () => {
             </section>
             <section>
               <h2 className="text-2xl font-bold mb-6">Top Cast</h2>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {movie.cast.map((actor) => (
                   <Link
                     key={actor.id}
@@ -307,14 +307,14 @@ const MovieDetails = () => {
                     <img
                       src={actor.image}
                       alt={actor.name}
-                      className="w-24 h-24 rounded-xl object-cover"
+                      className="w-20 h-24 sm:w-24 sm:h-24 rounded-xl object-cover shrink-0"
                       loading="lazy"
                     />
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">
+                    <div className="overflow-hidden">
+                      <h3 className="font-semibold text-lg mb-1 truncate">
                         {actor.name}
                       </h3>
-                      <p className="text-gray-400 mb-2">{actor.role}</p>
+                      <p className="text-gray-400 mb-2 truncate">{actor.role}</p>
                       <p className="text-sm text-gray-400 line-clamp-2">
                         {actor.bio}
                       </p>
