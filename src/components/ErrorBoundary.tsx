@@ -35,7 +35,7 @@ export class ErrorBoundary extends Component<Props, State> {
           <AlertTriangle className="w-12 h-12 text-yellow-500 mb-4" />
           <h2 className="text-xl font-bold text-white mb-2">Something went wrong</h2>
           <p className="text-zinc-400 mb-6 max-w-md">
-            We couldn't load this section. This might be due to a network issue or the server being temporarily unavailable.
+            We could not load this section. This might be due to a network issue or the server being temporarily unavailable.
           </p>
           <button
             onClick={() => {
