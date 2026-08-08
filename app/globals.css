@@ -56,10 +56,12 @@
   }
 
   html {
-    overflow-y: scroll;
+    overflow-y: scroll !important;
+    scrollbar-gutter: stable both-edges !important;
   }
 
-  html, body {
+  body {
+    min-height: 100vh;
     overflow-x: hidden;
   }
 }

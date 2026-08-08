@@ -20,7 +20,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent" />
         </div>
-        <div className="relative h-full container flex items-end pb-8">
+        <div className="relative h-full w-full flex items-end pb-8 px-4 sm:px-8">
           <div className="flex items-end gap-8">
             <img
               src={actor.image}
