@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 hover-glow">
             <Film className="w-8 h-8 text-yellow-500" />
-            <span className="text-xl font-bold text-glow">MovieDB</span>
+            <span className="text-xl font-bold text-glow">IMDb</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
