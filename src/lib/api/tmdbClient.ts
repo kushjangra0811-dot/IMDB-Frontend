@@ -1,4 +1,3 @@
-import { cache } from 'react';
 import { globalRateLimiter } from './rateLimiter';
 
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY || 'YOUR_TMDB_API_KEY';
@@ -6,7 +5,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 type NextFetchOptions = RequestInit & { next?: { revalidate?: number | false, tags?: string[] } };
 
-const fetchFromTMDB = cache(async (endpoint: string, params: Record<string, string | number> = {}, fetchOptions: NextFetchOptions = {}) => {
+const fetchFromTMDB = async (endpoint: string, params: Record<string, string | number> = {}, fetchOptions: NextFetchOptions = {}) => {
   const url = new URL(`${BASE_URL}${endpoint}`);
   url.searchParams.append('api_key', API_KEY);
   
@@ -28,7 +27,7 @@ const fetchFromTMDB = cache(async (endpoint: string, params: Record<string, stri
   }
 
   return response.json();
-});
+};
 
 // Define interfaces based on what the app already uses
 export interface Movie {

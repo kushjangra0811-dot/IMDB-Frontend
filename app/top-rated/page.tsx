@@ -7,7 +7,7 @@ export default async function TopRatedPage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchInfiniteQuery({
-    queryKey: ['topRatedMovies'],
+    queryKey: ['movies', 'topRated'],
     queryFn: () => getTopRatedMovies({ pageParam: 1 }, { next: { revalidate: 3600, tags: ['movies', 'top-rated'] } }),
     initialPageParam: 1,
   });

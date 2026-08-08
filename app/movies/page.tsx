@@ -7,7 +7,7 @@ export default async function MoviesPage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchInfiniteQuery({
-    queryKey: ['trendingMovies'],
+    queryKey: ['movies', 'trending'],
     queryFn: () => getTrendingMovies({ pageParam: 1 }, { next: { revalidate: 3600, tags: ['movies', 'popular'] } }),
     initialPageParam: 1,
   });

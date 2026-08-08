@@ -125,8 +125,8 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         </div>
 
         {/* Main Content */}
-        <div className="md:col-span-2">
-          <section className="mb-12">
+        <div className="md:col-span-2 flex flex-col gap-8">
+          <section>
             <h2 className="text-2xl font-bold mb-4 text-foreground">Biography</h2>
             <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
               {actor.biography}
@@ -134,7 +134,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
           </section>
 
           {actor.upcomingProjects?.length > 0 && (
-            <section className="mb-12">
+            <section>
               <h2 className="text-2xl font-bold mb-4 text-foreground">Upcoming Projects</h2>
               <div className="grid gap-4">
                 {actor.upcomingProjects.map((project: any, index: number) => (

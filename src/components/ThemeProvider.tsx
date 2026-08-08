@@ -30,7 +30,7 @@ export function ThemeProvider({
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   };
 
-  const activeTheme = routeOverride || (theme === 'auto' ? getSystemTheme() : theme);
+  const activeTheme = routeOverride || theme;
 
   const setTheme = (newTheme: Theme) => {
     startTransition(() => {
@@ -44,7 +44,7 @@ export function ThemeProvider({
       document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
       
       // 3. Update DOM attribute for immediate CSS update (no reload)
-      document.documentElement.setAttribute('data-theme', newTheme === 'auto' ? getSystemTheme() : newTheme);
+      document.documentElement.setAttribute('data-theme', newTheme);
     });
   };
 
@@ -67,7 +67,7 @@ export function ThemeProvider({
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
       if (theme === 'auto') {
-        document.documentElement.setAttribute('data-theme', getSystemTheme());
+        document.documentElement.setAttribute('data-theme', 'auto');
       }
     };
     mediaQuery.addEventListener('change', handleChange);

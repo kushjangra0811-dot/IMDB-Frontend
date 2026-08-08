@@ -56,7 +56,6 @@
   }
 
   html {
-    overflow-y: scroll;
     scrollbar-gutter: stable;
   }
 
@@ -108,11 +107,10 @@
   box-shadow: 0 8px 20px -8px rgba(255, 255, 255, 0.3);
 }
 
-/* Disable hover lift on touch devices to prevent navbar overlap */
 @media (hover: none) {
   .movie-card-hover:hover {
-    transform: none;
-    box-shadow: none;
+    transform: none !important;
+    box-shadow: none !important;
   }
 }
 

@@ -147,7 +147,7 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                       <img
                         src={actor.image}
                         alt={actor.name}
-                        className="w-16 h-16 rounded-full object-cover group-hover:scale-105 transition-transform"
+                        className="w-16 h-16 rounded-full object-cover shrink-0 group-hover:scale-105 transition-transform"
                         loading="lazy"
                       />
                       <div>
