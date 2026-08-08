@@ -13,7 +13,7 @@ interface ActorProfileViewProps {
 export default function ActorProfileView({ actor }: ActorProfileViewProps) {
   const [activeTab, setActiveTab] = useState<'info' | 'social' | 'awards'>('info');
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Hero Banner */}
       <div className="relative h-[400px] mb-8 rounded-xl overflow-hidden bg-background">
         <div
@@ -22,7 +22,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent" />
         </div>
-        <div className="relative h-full container flex items-end pb-8">
+        <div className="relative h-full w-full flex items-end pb-8 px-4 sm:px-8">
           <div className="flex items-end gap-8">
             <div className="relative w-48 h-48 rounded-xl overflow-hidden border-4 border-zinc-900 bg-muted shrink-0">
               <Image
@@ -73,11 +73,9 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         }}
       />
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {/* Sidebar with Tabs */}
-        <div>
-          <div className="sticky top-24 space-y-6">
-            <div className="flex bg-muted rounded-xl p-1 gap-1">
+      {/* Tabs / Subpanels */}
+      <div className="w-full max-w-3xl">
+        <div className="flex bg-muted rounded-xl p-1 gap-1 mb-6">
               <button
                 onClick={() => setActiveTab('info')}
                 className={`flex-1 py-2 text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 ${activeTab === 'info' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
@@ -180,11 +178,10 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
                 </div>
               </div>
             )}
-          </div>
-        </div>
+      </div>
 
-        {/* Main Content */}
-        <div className="md:col-span-2">
+      {/* Main Content */}
+      <div className="flex flex-col gap-12 w-full">
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 text-foreground">Biography</h2>
             <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
@@ -250,11 +247,10 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
             </div>
           </section>
 
-          {/* Virtualized Filmography Explorer (client island) */}
-          {actor.allMovies && actor.allMovies.length > 0 && (
-            <FilmographyExplorer movies={actor.allMovies} />
-          )}
-        </div>
+        {/* Virtualized Filmography Explorer (client island) */}
+        {actor.allMovies && actor.allMovies.length > 0 && (
+          <FilmographyExplorer movies={actor.allMovies} />
+        )}
       </div>
     </div>
   );
