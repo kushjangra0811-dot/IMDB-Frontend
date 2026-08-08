@@ -5,80 +5,18 @@ import Hero from "../components/Hero";
 import { Award, Clock, Star, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import MovieCarousel from "../components/MovieCarousel";
+import { useTrendingMovies, useUpcomingMovies } from "../hooks/useMovies";
 
 const Home = () => {
-  const trendingMovies = [
-    {
-      id: 1,
-      title: "Dune: Part Two",
-      rating: 8.8,
-      image:
-        "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?auto=format&fit=crop&w=800&q=80",
-      year: 2024,
-      genre: ["Action", "Adventure", "Sci-Fi"],
-    },
-    {
-      id: 2,
-      title: "Poor Things",
-      rating: 8.4,
-      image:
-        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80",
-      year: 2023,
-      genre: ["Comedy", "Drama", "Romance"],
-    },
-    {
-      id: 3,
-      title: "Oppenheimer",
-      rating: 8.9,
-      image:
-        "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&q=80",
-      year: 2023,
-      genre: ["Biography", "Drama", "History"],
-    },
-    {
-      id: 4,
-      title: "The Batman",
-      rating: 8.5,
-      image:
-        "https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?auto=format&fit=crop&w=800&q=80",
-      year: 2024,
-      genre: ["Action", "Crime", "Drama"],
-    },
-    {
-      id: 5,
-      title: "Killers of the Flower Moon",
-      rating: 8.7,
-      image:
-        "https://images.unsplash.com/photo-1533928298208-27ff66555d8d?auto=format&fit=crop&w=800&q=80",
-      year: 2023,
-      genre: ["Crime", "Drama", "History"],
-    },
-  ];
+  const { data: trendingData, isLoading: trendingLoading } = useTrendingMovies();
+  const { data: upcomingData, isLoading: upcomingLoading } = useUpcomingMovies();
 
-  const upcomingMovies = [
-    {
-      id: 6,
-      title: "Deadpool 3",
-      rating: 9.1,
-      image:
-        "https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=800&q=80",
-      year: 2024,
-      genre: ["Action", "Comedy", "Adventure"],
-    },
-    {
-      id: 8,
-      title: "Kingdom of the Planet of the Apes",
-      rating: 8.3,
-      image:
-        "https://images.unsplash.com/photo-1533973860717-d49dfd14cf64?auto=format&fit=crop&w=800&q=80",
-      year: 2024,
-      genre: ["Action", "Adventure", "Drama"],
-    },
-  ];
+  const trendingMovies = trendingData?.pages[0]?.results || [];
+  const upcomingMovies = upcomingData?.pages[0]?.results || [];
 
   return (
     <div>
-      <Hero />
+      <Hero movies={trendingMovies} />
       <main className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {[
@@ -120,7 +58,7 @@ const Home = () => {
         
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold flex items-center gap-2 text-white">
+            <h2 className="text-2xl font-bold flex items-center gap-2 text-foreground">
               <TrendingUp className="w-6 h-6 text-yellow-500" />
               Trending Now
             </h2>
@@ -128,12 +66,12 @@ const Home = () => {
               View All
             </Link>
           </div>
-          <MovieCarousel movies={trendingMovies} />
+          <MovieCarousel movies={trendingMovies} isLoading={trendingLoading} />
         </section>
 
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold flex items-center gap-2 text-white">
+            <h2 className="text-2xl font-bold flex items-center gap-2 text-foreground">
               <Clock className="w-6 h-6 text-yellow-500" />
               Coming Soon
             </h2>
@@ -141,7 +79,7 @@ const Home = () => {
               View All
             </Link>
           </div>
-          <MovieCarousel movies={upcomingMovies} />
+          <MovieCarousel movies={upcomingMovies} isLoading={upcomingLoading} />
         </section>
       </main>
     </div>

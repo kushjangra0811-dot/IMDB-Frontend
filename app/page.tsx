@@ -6,14 +6,16 @@ export default async function HomePage() {
   const queryClient = new QueryClient();
 
   // Server-side fetching using Next.js cache and our rate limiter
+  // IMPORTANT: Query keys MUST match the ones in useMovies.ts hooks
+  // so that TanStack Query hydration actually picks up the prefetched data
   await Promise.all([
     queryClient.prefetchInfiniteQuery({
-      queryKey: ['trendingMovies'],
+      queryKey: ['movies', 'trending'],
       queryFn: () => getTrendingMovies({ pageParam: 1 }, { next: { revalidate: 3600, tags: ['movies', 'trending'] } }),
       initialPageParam: 1,
     }),
     queryClient.prefetchInfiniteQuery({
-      queryKey: ['upcomingMovies'],
+      queryKey: ['movies', 'upcoming'],
       queryFn: () => getUpcomingMovies({ pageParam: 1 }, { next: { revalidate: 3600, tags: ['movies', 'upcoming'] } }),
       initialPageParam: 1,
     }),

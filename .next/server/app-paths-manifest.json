@@ -1,7 +1,10 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/movie/[id]/page": "app/movie/[id]/page.js",
-  "/coming-soon/page": "app/coming-soon/page.js",
   "/page": "app/page.js",
-  "/actor/[id]/page": "app/actor/[id]/page.js"
+  "/actor/[id]/page": "app/actor/[id]/page.js",
+  "/movie/[id]/page": "app/movie/[id]/page.js",
+  "/movies/page": "app/movies/page.js",
+  "/top-rated/page": "app/top-rated/page.js",
+  "/api/reviews/[movieId]/route": "app/api/reviews/[movieId]/route.js",
+  "/api/reviews/stream/[movieId]/route": "app/api/reviews/stream/[movieId]/route.js",
+  "/api/reviews/[movieId]/[reviewId]/vote/route": "app/api/reviews/[movieId]/[reviewId]/vote/route.js"
 }

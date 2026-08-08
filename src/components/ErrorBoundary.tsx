@@ -31,10 +31,10 @@ export class ErrorBoundary extends Component<Props, State> {
       }
       
       return (
-        <div className="flex flex-col items-center justify-center min-h-[400px] p-8 text-center bg-zinc-900 rounded-xl border border-zinc-800">
+        <div className="flex flex-col items-center justify-center min-h-[400px] p-8 text-center bg-background rounded-xl border border-border">
           <AlertTriangle className="w-12 h-12 text-yellow-500 mb-4" />
-          <h2 className="text-xl font-bold text-white mb-2">Something went wrong</h2>
-          <p className="text-zinc-400 mb-6 max-w-md">
+          <h2 className="text-xl font-bold text-foreground mb-2">Something went wrong</h2>
+          <p className="text-muted-foreground mb-6 max-w-md">
             We could not load this section. This might be due to a network issue or the server being temporarily unavailable.
           </p>
           <button

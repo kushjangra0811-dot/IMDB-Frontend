@@ -1,19 +1,34 @@
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import React, { Suspense } from 'react';
 import { getMovieDetails } from '../../../src/lib/api/tmdbClient';
-import MovieDetailsClient from '../../../src/views/MovieDetails';
+import MovieDetails from '../../../src/views/MovieDetails';
 
-export default async function MoviePage({ params }: { params: { id: string } }) {
-  const queryClient = new QueryClient();
+export const revalidate = 3600; // revalidate every hour
 
-  // Next.js server-side caching of the movie details
-  await queryClient.prefetchQuery({
-    queryKey: ['movie', params.id],
-    queryFn: () => getMovieDetails(params.id, { next: { revalidate: 3600, tags: ['movie', params.id] } }),
-  });
+async function MovieDetailsFetcher({ id }: { id: string }) {
+  try {
+    const movie = await getMovieDetails(id);
+    return <MovieDetails movie={movie} />;
+  } catch (error) {
+    // Graceful degradation / Fallback for API failures
+    return (
+      <div className="flex items-center justify-center min-h-[50vh] text-red-500 flex-col gap-4">
+        <h2 className="text-2xl font-bold">Failed to load movie details</h2>
+        <p>Our servers are experiencing issues. Please try again later.</p>
+      </div>
+    );
+  }
+}
 
+export default function MoviePage({ params }: { params: { id: string } }) {
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <MovieDetailsClient />
-    </HydrationBoundary>
+    <Suspense 
+      fallback={
+        <div className="flex items-center justify-center min-h-[90vh]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500"></div>
+        </div>
+      }
+    >
+      <MovieDetailsFetcher id={params.id} />
+    </Suspense>
   );
 }

@@ -1,36 +1,39 @@
 import { Star } from "lucide-react";
 import React from "react";
+import Link from "next/link";
+import WatchlistButton from "./WatchlistButton";
 
-const MovieCard = ({ title, rating, image, year, genre }) => {
+const MovieCard = ({ id, title, rating, image, year, genre }: any) => {
   return (
-    <div className="bg-zinc-900/50 rounded-xl overflow-hidden movie-card-hover backdrop-blur-sm">
-      <div className="relative aspect-[2/3]">
+    <div className="bg-background/50 rounded-xl overflow-hidden movie-card-hover backdrop-blur-sm cursor-pointer group/card relative">
+      <Link href={`/movie/${id}`} className="block relative aspect-[2/3]">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover hover-glow"
+          className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="absolute bottom-0 p-4 w-full">
-            <button className="w-full bg-yellow-500 text-black py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
-              View Details
-            </button>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity flex flex-col justify-end p-4">
+          <div className="w-full bg-yellow-500 text-black py-2 rounded-lg font-semibold text-center hover:bg-yellow-400 transition-colors">
+            View Details
           </div>
         </div>
-        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 scale-90 sm:scale-100 origin-top-right">
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 scale-90 sm:scale-100 origin-top-right z-10">
           <Star className="w-4 h-4 text-yellow-500 fill-current" />
           <span className="text-yellow-500 font-medium">{rating}</span>
         </div>
+      </Link>
+      <div className="absolute top-2 left-2 z-10 scale-90 origin-top-left group-hover/card:scale-100 transition-transform">
+        <WatchlistButton movie={{ id: String(id), title, image }} compact />
       </div>
       <div className="p-4 overflow-hidden">
-        <div className="flex items-center justify-between mb-2">
+        <Link href={`/movie/${id}`} className="flex items-center justify-between mb-2 hover:text-yellow-500 transition-colors">
           <h3 className="font-semibold text-lg truncate text-glow flex-1 min-w-0 pr-2">{title}</h3>
-          <span className="text-zinc-400 text-sm shrink-0">{year}</span>
-        </div>
+          <span className="text-muted-foreground text-sm shrink-0">{year}</span>
+        </Link>
         {genre && (
           <div className="flex flex-wrap gap-2">
-            {genre.slice(0, 2).map((g) => (
-              <span key={g} className="text-xs px-2 py-1 bg-zinc-800 rounded-full text-zinc-300">
+            {genre.slice(0, 2).map((g: string) => (
+              <span key={g} className="text-xs px-2 py-1 bg-muted rounded-full text-muted-foreground">
                 {g}
               </span>
             ))}

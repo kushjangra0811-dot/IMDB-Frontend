@@ -1,13 +1,32 @@
 'use client';
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import MovieCard from "./MovieCard";
 
-const MovieCarousel = ({ movies }: { movies: any[] }) => {
+const MovieCarousel = ({ movies, isLoading }: { movies: any[], isLoading?: boolean }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [startIndex, setStartIndex] = useState(0);
   const visibleMovies = 4;
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const { current } = scrollContainerRef;
+      const scrollAmount = direction === "left" ? -400 : 400;
+      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex gap-4 overflow-hidden py-4">
+        {[1, 2, 3, 4].map((n) => (
+          <div key={n} className="flex-none w-[200px] sm:w-[250px] aspect-[2/3] bg-muted rounded-lg animate-pulse" />
+        ))}
+      </div>
+    );
+  }
 
   const nextSlide = () => {
     if (!movies) return;
@@ -39,9 +58,7 @@ const MovieCarousel = ({ movies }: { movies: any[] }) => {
               key={movie.id}
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 p-2"
             >
-              <Link href={`/movie/${movie.id}`}>
-                <MovieCard {...movie} />
-              </Link>
+              <MovieCard {...movie} />
             </div>
           ))}
         </div>
@@ -53,13 +70,13 @@ const MovieCarousel = ({ movies }: { movies: any[] }) => {
             onClick={prevSlide}
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft className="w-6 h-6 text-foreground" />
           </button>
           <button
             onClick={nextSlide}
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            <ChevronRight className="w-6 h-6 text-white" />
+            <ChevronRight className="w-6 h-6 text-foreground" />
           </button>
         </>
       )}

@@ -123,8 +123,10 @@ export class RateLimiter {
             throw new Error(`Request failed with status ${response.status} after ${retries} retries.`);
           }
           const backoff = this.config.baseBackoffMs * Math.pow(2, retries);
-          logTrace(`Retrying ${url} in ${backoff}ms (Retry ${retries + 1})`);
-          await new Promise(resolve => setTimeout(resolve, backoff));
+          const jitter = Math.random() * 0.3 * backoff; // 30% jitter
+          const finalBackoff = backoff + jitter;
+          logTrace(`Retrying ${url} in ${Math.round(finalBackoff)}ms (Retry ${retries + 1})`);
+          await new Promise(resolve => setTimeout(resolve, finalBackoff));
           retries++;
           continue; // Retry
         }
@@ -141,8 +143,10 @@ export class RateLimiter {
           throw error;
         }
         const backoff = this.config.baseBackoffMs * Math.pow(2, retries);
-        logTrace(`Network error fetching ${url}. Retrying in ${backoff}ms (Retry ${retries + 1})`);
-        await new Promise(resolve => setTimeout(resolve, backoff));
+        const jitter = Math.random() * 0.3 * backoff; // 30% jitter
+        const finalBackoff = backoff + jitter;
+        logTrace(`Network error fetching ${url}. Retrying in ${Math.round(finalBackoff)}ms (Retry ${retries + 1})`);
+        await new Promise(resolve => setTimeout(resolve, finalBackoff));
         retries++;
       }
     }

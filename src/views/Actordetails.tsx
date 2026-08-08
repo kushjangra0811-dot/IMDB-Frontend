@@ -200,15 +200,15 @@ const Actordetails = () => {
               <h2 className="font-semibold mb-4">Personal Info</h2>
               <dl className="space-y-4">
                 <div>
-                  <dt className="text-gray-400">Born</dt>
+                  <dt className="text-muted-foreground">Born</dt>
                   <dd>{actor.birthDate}</dd>
                 </div>
                 <div>
-                  <dt className="text-gray-400">Place of Birth</dt>
+                  <dt className="text-muted-foreground">Place of Birth</dt>
                   <dd>{actor.birthPlace}</dd>
                 </div>
                 <div>
-                  <dt className="text-gray-400">Movies</dt>
+                  <dt className="text-muted-foreground">Movies</dt>
                   <dd>{actor.stats.moviesCount} titles</dd>
                 </div>
               </dl>
@@ -218,13 +218,13 @@ const Actordetails = () => {
               <div className="flex gap-4">
                 <a
                   href={actor.socialMedia.instagram}
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   <Instagram className="w-6 h-6" />
                 </a>
                 <a
                   href={actor.socialMedia.twitter}
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   <Twitter className="w-6 h-6" />
                 </a>
@@ -254,7 +254,7 @@ const Actordetails = () => {
                     <span className="font-semibold">{award.name}</span>
                     <span className="mx-2">|</span>
                     <span>{award.year}</span>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-muted-foreground">
                       {award.category} - {award.film}
                     </p>
                   </div>
@@ -286,7 +286,7 @@ const Actordetails = () => {
                       <h3 className="font-semibold text-lg mb-1">
                         {movie.title}
                       </h3>
-                      <p className="text-gray-400">as {movie.role}</p>
+                      <p className="text-muted-foreground">as {movie.role}</p>
                       <p className="text-gray-500 text-sm">{movie.year}</p>
                     </div>
                   </div>

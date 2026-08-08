@@ -1,20 +1,15 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/coming-soon/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/coming-soon/page.js"
+      "static/chunks/app/page.js"
     ],
     "/movie/[id]/page": [
       "static/chunks/webpack.js",
@@ -26,30 +21,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/movie/[id]/loading.js"
     ],
-    "/actor/[id]/@awards/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/actor/[id]/@awards/page.js"
-    ],
-    "/actor/[id]/@similar/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/actor/[id]/@similar/page.js"
-    ],
-    "/actor/[id]/@social/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/actor/[id]/@social/page.js"
-    ],
     "/actor/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/actor/[id]/page.js"
     ],
-    "/actor/[id]/layout": [
+    "/movies/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/actor/[id]/layout.js"
+      "static/chunks/app/movies/page.js"
+    ],
+    "/top-rated/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/top-rated/page.js"
+    ],
+    "/coming-soon/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/coming-soon/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
