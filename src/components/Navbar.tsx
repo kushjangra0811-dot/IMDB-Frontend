@@ -56,12 +56,16 @@ const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-              <button 
-                onClick={() => setTheme(theme === 'dark' ? 'light' : theme === 'light' ? 'high-contrast' : theme === 'high-contrast' ? 'auto' : 'dark')}
-                className="px-4 py-2 text-sm font-semibold rounded-lg bg-muted text-muted-foreground hover:text-foreground transition-colors hidden md:block"
+              <select
+                value={theme}
+                onChange={(e) => setTheme(e.target.value)}
+                className="px-4 py-2 text-sm font-semibold rounded-lg bg-muted text-muted-foreground hover:text-foreground transition-colors hidden md:block focus:outline-none appearance-none"
               >
-                Theme: {theme}
-              </button>
+                <option value="auto">Auto</option>
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="high-contrast">High Contrast</option>
+              </select>
 
               <button className="bg-accent text-accent-foreground px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-all hover:scale-105 duration-300 hidden md:block">
                 Sign In
@@ -105,15 +109,19 @@ const Navbar = () => {
               ))}
             </div>
             <div className="flex gap-4 mt-4">
-              <button 
-                onClick={() => {
-                  setTheme(theme === 'dark' ? 'light' : theme === 'light' ? 'high-contrast' : theme === 'high-contrast' ? 'auto' : 'dark');
+              <select
+                value={theme}
+                onChange={(e) => {
+                  setTheme(e.target.value);
                   setIsMenuOpen(false);
                 }}
-                className="flex-1 py-3 text-sm font-semibold rounded-lg bg-muted text-foreground transition-colors"
+                className="flex-1 py-3 px-4 text-sm font-semibold rounded-lg bg-muted text-foreground transition-colors focus:outline-none appearance-none"
               >
-                Theme: {theme}
-              </button>
+                <option value="auto">Auto</option>
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="high-contrast">High Contrast</option>
+              </select>
               <button className="flex-1 bg-accent text-accent-foreground py-3 rounded-lg font-semibold transition-colors">
                 Sign In
               </button>

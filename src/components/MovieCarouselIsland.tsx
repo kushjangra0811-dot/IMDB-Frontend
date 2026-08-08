@@ -113,7 +113,7 @@ export default function MovieCarouselIsland({ media }: MovieCarouselIslandProps)
                 tabIndex={currentIndex === idx ? 0 : -1}
               >
                 <div className="w-20 h-20 bg-yellow-500/90 rounded-full flex items-center justify-center backdrop-blur-sm group-hover/play:scale-110 group-hover/play:bg-yellow-400 transition-all shadow-xl shadow-yellow-500/20">
-                  <Play className="w-8 h-8 text-zinc-900 fill-zinc-900 ml-1" />
+                  <Play className="w-8 h-8 text-black fill-black ml-1" />
                 </div>
               </button>
             )}
@@ -126,7 +126,7 @@ export default function MovieCarouselIsland({ media }: MovieCarouselIslandProps)
         <>
           <button
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); paginate(-1); }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 focus:outline-none"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-background/50 hover:bg-background/80 text-foreground rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 focus:outline-none border border-border"
             aria-label="Previous media"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -134,7 +134,7 @@ export default function MovieCarouselIsland({ media }: MovieCarouselIslandProps)
           
           <button
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); paginate(1); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 focus:outline-none"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-background/50 hover:bg-background/80 text-foreground rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 focus:outline-none border border-border"
             aria-label="Next media"
           >
             <ChevronRight className="w-6 h-6" />

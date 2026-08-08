@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Star } from 'lucide-react';
 
 interface MovieCredit {
@@ -122,12 +123,15 @@ export default function FilmographyExplorer({ movies }: { movies: MovieCredit[] 
                   className="border-b border-border hover:bg-muted/50 transition-colors"
                 >
                   <Link href={`/movie/${movie.id}`} className="flex items-center gap-4 px-4 h-full">
-                    <img 
-                      src={movie.image} 
-                      alt={movie.title} 
-                      className="w-10 h-14 object-cover rounded shadow-sm bg-muted shrink-0"
-                      loading="lazy"
-                    />
+                    <div className="relative w-10 h-14 shrink-0 rounded overflow-hidden shadow-sm bg-muted">
+                      <Image 
+                        src={movie.image} 
+                        alt={movie.title} 
+                        fill
+                        sizes="40px"
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-foreground truncate">{movie.title}</h3>
                       <p className="text-muted-foreground text-sm truncate">as {movie.role}</p>

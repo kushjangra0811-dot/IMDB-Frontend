@@ -67,7 +67,7 @@ const Hero = ({ movies = [] }: { movies?: any[] }) => {
           <div className="flex items-center gap-4">
             <Link
               href={`/movie/${movie.id}`}
-              className="bg-yellow-500 text-black px-8 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-yellow-400 transition-all hover:scale-105 duration-300"
+              className="bg-yellow-500 text-black px-8 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-yellow-400 transition-all hover:scale-105 duration-300 shadow-lg shadow-yellow-500/20"
             >
               <Play className="w-5 h-5" />
               Watch Trailer
