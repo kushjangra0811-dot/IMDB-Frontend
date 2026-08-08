@@ -4,7 +4,9 @@ import { globalRateLimiter } from './rateLimiter';
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY || 'YOUR_TMDB_API_KEY';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-const fetchFromTMDB = cache(async (endpoint: string, params: Record<string, string | number> = {}, fetchOptions: RequestInit = {}) => {
+type NextFetchOptions = RequestInit & { next?: { revalidate?: number | false, tags?: string[] } };
+
+const fetchFromTMDB = cache(async (endpoint: string, params: Record<string, string | number> = {}, fetchOptions: NextFetchOptions = {}) => {
   const url = new URL(`${BASE_URL}${endpoint}`);
   url.searchParams.append('api_key', API_KEY);
   
@@ -64,7 +66,7 @@ const mapTMDBMovie = (movie: any): Movie => ({
 });
 
 // Cursor-based fetching for lists
-export const getTrendingMovies = async ({ pageParam = 1 }: { pageParam?: number }, fetchOptions?: RequestInit) => {
+export const getTrendingMovies = async ({ pageParam = 1 }: { pageParam?: number }, fetchOptions?: NextFetchOptions) => {
   const data = await fetchFromTMDB('/trending/movie/week', { page: pageParam }, fetchOptions);
   return {
     results: data.results.map(mapTMDBMovie),
@@ -72,7 +74,7 @@ export const getTrendingMovies = async ({ pageParam = 1 }: { pageParam?: number 
   };
 };
 
-export const getUpcomingMovies = async ({ pageParam = 1 }: { pageParam?: number }, fetchOptions?: RequestInit) => {
+export const getUpcomingMovies = async ({ pageParam = 1 }: { pageParam?: number }, fetchOptions?: NextFetchOptions) => {
   const data = await fetchFromTMDB('/movie/upcoming', { page: pageParam }, fetchOptions);
   return {
     results: data.results.map(mapTMDBMovie),
@@ -80,7 +82,7 @@ export const getUpcomingMovies = async ({ pageParam = 1 }: { pageParam?: number 
   };
 };
 
-export const getTopRatedMovies = async ({ pageParam = 1 }: { pageParam?: number }, fetchOptions?: RequestInit) => {
+export const getTopRatedMovies = async ({ pageParam = 1 }: { pageParam?: number }, fetchOptions?: NextFetchOptions) => {
   const data = await fetchFromTMDB('/movie/top_rated', { page: pageParam }, fetchOptions);
   return {
     results: data.results.map(mapTMDBMovie),
@@ -88,7 +90,7 @@ export const getTopRatedMovies = async ({ pageParam = 1 }: { pageParam?: number 
   };
 };
 
-export const getMovieDetails = async (id: string, fetchOptions?: RequestInit) => {
+export const getMovieDetails = async (id: string, fetchOptions?: NextFetchOptions) => {
   const data = await fetchFromTMDB(`/movie/${id}`, {
     append_to_response: 'credits,videos'
   }, fetchOptions);
@@ -128,7 +130,7 @@ export const getMovieDetails = async (id: string, fetchOptions?: RequestInit) =>
   };
 };
 
-export const getActorDetails = async (id: string, fetchOptions?: RequestInit) => {
+export const getActorDetails = async (id: string, fetchOptions?: NextFetchOptions) => {
   const data = await fetchFromTMDB(`/person/${id}`, {
     append_to_response: 'movie_credits,external_ids'
   }, fetchOptions);
