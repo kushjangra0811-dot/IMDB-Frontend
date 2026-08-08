@@ -44,7 +44,7 @@ const TopRated = () => {
                   />
                 </div>
                 <div className="flex flex-1 justify-between items-center px-4 sm:px-6 overflow-hidden">
-                  <div className="flex flex-col justify-center">
+                  <div className="flex flex-col justify-center min-w-0 flex-1">
                     <h2 className="text-base sm:text-lg font-bold text-black mb-0.5 truncate">{movie.title}</h2>
                     <p className="text-muted-foreground text-xs sm:text-sm">
                       {movie.year} • {formatVotes(movie.voteCount || 0)}

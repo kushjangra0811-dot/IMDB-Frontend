@@ -177,7 +177,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
                         </span>
                       </div>
                     </div>
-                    <div className="p-4">
+                    <div className="p-4 min-w-0 flex-1">
                       <h3 className="font-semibold text-lg mb-1 text-foreground truncate">
                         {movie.title}
                       </h3>
