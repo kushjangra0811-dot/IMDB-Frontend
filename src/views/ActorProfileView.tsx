@@ -13,7 +13,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Banner */}
-      <div className="relative h-[400px] mb-8 rounded-xl overflow-hidden bg-background">
+      <div className="relative h-[400px] mb-8 rounded-xl overflow-hidden bg-zinc-900">
         <div
           className="absolute inset-0 bg-cover bg-top"
           style={{ backgroundImage: `url(${actor.coverImage})` }}

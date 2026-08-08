@@ -56,8 +56,7 @@
   }
 
   html {
-    overflow-y: scroll !important;
-    scrollbar-gutter: stable both-edges !important;
+    overflow-y: scroll;
   }
 
   body {
@@ -129,10 +128,4 @@
 [class*="overflow-x-auto"] {
   -webkit-overflow-scrolling: touch;
   transform: translateZ(0);
-}
-
-/* Ensure images never overflow their containers */
-img, video {
-  max-width: 100%;
-  height: auto;
 }

@@ -24,8 +24,8 @@ export class RateLimiter {
 
   constructor(config?: Partial<RateLimiterConfig>) {
     this.config = {
-      bucketSize: 40,
-      tokensPerInterval: 40,
+      bucketSize: 100,
+      tokensPerInterval: 100,
       intervalMs: 10000,
       maxRetries: 3,
       baseBackoffMs: 1000,
@@ -59,7 +59,7 @@ export class RateLimiter {
           this.tokens--;
           resolve();
         } else {
-          setTimeout(tryConsume, 100); // Check every 100ms
+          setTimeout(tryConsume, 50); // Check every 50ms
         }
       };
       tryConsume();

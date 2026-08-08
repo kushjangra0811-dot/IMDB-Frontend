@@ -15,11 +15,10 @@ const fetchFromTMDB = cache(async (endpoint: string, params: Record<string, stri
   });
 
   const response = await globalRateLimiter.fetchWithResilience(url.toString(), {
-    next: { revalidate: 3600, tags: ['tmdb'] }, // 1 hour HTTP cache control
+    next: { revalidate: 86400, tags: ['tmdb'] }, // 24 hour ISR cache
     ...fetchOptions,
     headers: {
       'Accept': 'application/json',
-      'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400',
       ...fetchOptions.headers,
     },
   });

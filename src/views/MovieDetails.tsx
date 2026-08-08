@@ -31,7 +31,7 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
 
   return (
     <div>
-      <div className="relative h-[90vh] bg-background overflow-hidden">
+      <div className="relative h-[90vh] bg-zinc-900 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-top"
           style={{ backgroundImage: `url(${movie.coverImage || movie.image})` }}
