@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import MovieCarouselIsland from "../components/MovieCarouselIsland";
 import HeroTrailerButton from "../components/HeroTrailerButton";
 import ReviewSection from "../components/reviews/ReviewSection";
@@ -43,16 +42,12 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
         <div className="relative container mx-auto px-4 h-full flex items-end pb-12">
           <div className="grid md:grid-cols-3 gap-8 items-end">
             <div className="hidden md:block w-full max-w-sm shrink-0">
-              <div className="relative aspect-[2/3] rounded-lg shadow-xl overflow-hidden bg-muted/50 border-4 border-zinc-900/50">
-                <Image
-                  src={movie.image}
-                  alt={movie.title}
-                  fill
-                  priority
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
+              <img
+                src={movie.image}
+                alt={movie.title}
+                className="rounded-lg shadow-xl w-full h-auto object-contain bg-muted/50"
+                loading="lazy"
+              />
             </div>
 
             <div className="md:col-span-2">
@@ -149,15 +144,12 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                 {movie.cast?.map((actor: any) => (
                   <Link href={`/actor/${actor.id}`} key={actor.id}>
                     <div className="flex items-center gap-4 bg-muted/30 rounded-lg p-3 hover:bg-muted/50 transition-colors cursor-pointer group">
-                      <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-muted">
-                        <Image
-                          src={actor.image}
-                          alt={actor.name}
-                          fill
-                          sizes="64px"
-                          className="object-cover group-hover:scale-105 transition-transform"
-                        />
-                      </div>
+                      <img
+                        src={actor.image}
+                        alt={actor.name}
+                        className="w-16 h-16 rounded-full object-cover group-hover:scale-105 transition-transform"
+                        loading="lazy"
+                      />
                       <div>
                         <h3 className="font-semibold text-lg mb-1 truncate text-foreground">
                           {actor.name}
