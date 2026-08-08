@@ -58,7 +58,7 @@ const Navbar = () => {
               ))}
               <select
                 value={theme}
-                onChange={(e) => setTheme(e.target.value)}
+                onChange={(e) => setTheme(e.target.value as 'dark' | 'light' | 'high-contrast' | 'auto')}
                 className="px-4 py-2 text-sm font-semibold rounded-lg bg-muted text-muted-foreground hover:text-foreground transition-colors hidden md:block focus:outline-none appearance-none"
               >
                 <option value="auto">Auto</option>
@@ -112,7 +112,7 @@ const Navbar = () => {
               <select
                 value={theme}
                 onChange={(e) => {
-                  setTheme(e.target.value);
+                  setTheme(e.target.value as 'dark' | 'light' | 'high-contrast' | 'auto');
                   setIsMenuOpen(false);
                 }}
                 className="flex-1 py-3 px-4 text-sm font-semibold rounded-lg bg-muted text-foreground transition-colors focus:outline-none appearance-none"
