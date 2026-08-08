@@ -10,6 +10,12 @@
 
 # production
 /build
+/.next/
+*.tsbuildinfo
+
+# local mock databases
+reviews.json
+watchlist_db.json
 
 # misc
 .DS_Store
@@ -21,3 +27,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Large media files
+*.mp4
