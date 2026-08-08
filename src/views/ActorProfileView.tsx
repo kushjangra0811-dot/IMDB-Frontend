@@ -1,9 +1,8 @@
 'use client';
 
-import { Award, Instagram, Star, Twitter, Users, Info, Link as LinkIcon } from "lucide-react";
-import React, { useState } from "react";
+import { Award, Instagram, Star, Twitter } from "lucide-react";
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import FilmographyExplorer from "../components/FilmographyExplorer";
 
 interface ActorProfileViewProps {
@@ -11,9 +10,8 @@ interface ActorProfileViewProps {
 }
 
 export default function ActorProfileView({ actor }: ActorProfileViewProps) {
-  const [activeTab, setActiveTab] = useState<'info' | 'social' | 'awards'>('info');
   return (
-    <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="container mx-auto px-4 py-8">
       {/* Hero Banner */}
       <div className="relative h-[400px] mb-8 rounded-xl overflow-hidden bg-background">
         <div
@@ -22,18 +20,14 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent" />
         </div>
-        <div className="relative h-full w-full flex items-end pb-8 px-4 sm:px-8">
+        <div className="relative h-full container flex items-end pb-8">
           <div className="flex items-end gap-8">
-            <div className="relative w-48 h-48 rounded-xl overflow-hidden border-4 border-zinc-900 bg-muted shrink-0">
-              <Image
-                src={actor.image}
-                alt={actor.name}
-                fill
-                priority
-                sizes="192px"
-                className="object-cover"
-              />
-            </div>
+            <img
+              src={actor.image}
+              alt={actor.name}
+              className="w-48 h-48 rounded-xl object-cover border-4 border-zinc-900"
+              loading="eager"
+            />
             <div>
               <h1 className="text-4xl font-bold mb-4 text-foreground">{actor.name}</h1>
               <div className="flex items-center gap-6">
@@ -73,115 +67,65 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         }}
       />
 
-      {/* Tabs / Subpanels */}
-      <div className="w-full max-w-3xl">
-        <div className="flex bg-muted rounded-xl p-1 gap-1 mb-6">
-              <button
-                onClick={() => setActiveTab('info')}
-                className={`flex-1 py-2 text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 ${activeTab === 'info' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
-              >
-                <Info className="w-4 h-4" /> Info
-              </button>
-              <button
-                onClick={() => setActiveTab('social')}
-                className={`flex-1 py-2 text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 ${activeTab === 'social' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
-              >
-                <LinkIcon className="w-4 h-4" /> Social
-              </button>
-              <button
-                onClick={() => setActiveTab('awards')}
-                className={`flex-1 py-2 text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 ${activeTab === 'awards' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
-              >
-                <Award className="w-4 h-4" /> Awards
-              </button>
-            </div>
-
-            {activeTab === 'info' && (
-              <div className="bg-muted rounded-xl p-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <h2 className="font-semibold mb-4 text-foreground">Personal Info</h2>
-                <dl className="space-y-4">
+      <div className="grid md:grid-cols-3 gap-8">
+        {/* Sidebar */}
+        <div>
+          <div className="sticky top-24 space-y-6">
+            <div className="bg-muted rounded-xl p-6">
+              <h2 className="font-semibold mb-4 text-foreground">Personal Info</h2>
+              <dl className="space-y-4">
+                <div>
+                  <dt className="text-muted-foreground">Born</dt>
+                  <dd className="text-foreground">{actor.birthDate}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Place of Birth</dt>
+                  <dd className="text-foreground">{actor.birthPlace}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Movies</dt>
+                  <dd className="text-foreground">{actor.stats.moviesCount} titles</dd>
+                </div>
+                {actor.stats.yearsActive && actor.stats.yearsActive !== 'Unknown' && (
                   <div>
-                    <dt className="text-muted-foreground">Born</dt>
-                    <dd className="text-foreground">{actor.birthDate}</dd>
+                    <dt className="text-muted-foreground">Active</dt>
+                    <dd className="text-foreground">{actor.stats.yearsActive}</dd>
                   </div>
-                  <div>
-                    <dt className="text-muted-foreground">Place of Birth</dt>
-                    <dd className="text-foreground">{actor.birthPlace}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-muted-foreground">Movies</dt>
-                    <dd className="text-foreground">{actor.stats.moviesCount} titles</dd>
-                  </div>
-                  {actor.stats.yearsActive && actor.stats.yearsActive !== 'Unknown' && (
-                    <div>
-                      <dt className="text-muted-foreground">Active</dt>
-                      <dd className="text-foreground">{actor.stats.yearsActive}</dd>
-                    </div>
-                  )}
-                </dl>
-              </div>
-            )}
-
-            {activeTab === 'social' && (
-              <div className="bg-muted rounded-xl p-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <h2 className="font-semibold mb-4 text-foreground">Social Media</h2>
-                {(actor.socialMedia?.instagram || actor.socialMedia?.twitter) ? (
-                  <div className="flex gap-4">
-                    {actor.socialMedia.instagram && (
-                      <a
-                        href={actor.socialMedia.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-muted-foreground hover:text-pink-500 transition-colors"
-                      >
-                        <Instagram className="w-6 h-6" /> Instagram
-                      </a>
-                    )}
-                    {actor.socialMedia.twitter && (
-                      <a
-                        href={actor.socialMedia.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-muted-foreground hover:text-blue-400 transition-colors"
-                      >
-                        <Twitter className="w-6 h-6" /> Twitter
-                      </a>
-                    )}
-                  </div>
-                ) : (
-                  <p className="text-muted-foreground">No official social media accounts listed.</p>
                 )}
-              </div>
-            )}
-
-            {activeTab === 'awards' && (
-              <div className="bg-muted rounded-xl p-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <h2 className="font-semibold mb-4 text-foreground">Awards</h2>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Star className="w-5 h-5 text-yellow-500" />
-                    <div>
-                      <p className="text-foreground font-medium">Average Rating</p>
-                      <p className="text-muted-foreground text-sm">{actor.stats.avgRating}/10</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Award className="w-5 h-5 text-purple-500" />
-                    <div>
-                      <p className="text-foreground font-medium">Total Credits</p>
-                      <p className="text-muted-foreground text-sm">{actor.stats.moviesCount} movies</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground italic mt-4">
-                    Detailed awards data not available.
-                  </p>
+              </dl>
+            </div>
+            {(actor.socialMedia?.instagram || actor.socialMedia?.twitter) && (
+              <div className="bg-muted rounded-lg p-6">
+                <h2 className="font-semibold mb-4 text-foreground">Social Media</h2>
+                <div className="flex gap-4">
+                  {actor.socialMedia.instagram && (
+                    <a
+                      href={actor.socialMedia.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      <Instagram className="w-6 h-6" />
+                    </a>
+                  )}
+                  {actor.socialMedia.twitter && (
+                    <a
+                      href={actor.socialMedia.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      <Twitter className="w-6 h-6" />
+                    </a>
+                  )}
                 </div>
               </div>
             )}
-      </div>
+          </div>
+        </div>
 
-      {/* Main Content */}
-      <div className="flex flex-col gap-12 w-full">
+        {/* Main Content */}
+        <div className="md:col-span-2">
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 text-foreground">Biography</h2>
             <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
@@ -219,15 +163,14 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
               {actor.knownFor?.map((movie: any) => (
                 <Link key={movie.id} href={`/movie/${movie.id}`}>
                   <div className="bg-muted rounded-lg overflow-hidden hover:scale-105 transition-transform">
-                    <div className="relative aspect-[2/3] bg-muted">
-                      <Image
+                    <div className="relative aspect-[2/3]">
+                      <img
                         src={movie.image}
                         alt={movie.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
                       />
-                      <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 z-10">
+                      <div className="absolute top-4 right-4 bg-black/60 px-2 py-1 rounded-md flex items-center gap-1">
                         <Star className="w-4 h-4 text-yellow-500 fill-current" />
                         <span className="text-yellow-500 font-medium">
                           {movie.rating}
@@ -247,10 +190,11 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
             </div>
           </section>
 
-        {/* Virtualized Filmography Explorer (client island) */}
-        {actor.allMovies && actor.allMovies.length > 0 && (
-          <FilmographyExplorer movies={actor.allMovies} />
-        )}
+          {/* Virtualized Filmography Explorer (client island) */}
+          {actor.allMovies && actor.allMovies.length > 0 && (
+            <FilmographyExplorer movies={actor.allMovies} />
+          )}
+        </div>
       </div>
     </div>
   );
