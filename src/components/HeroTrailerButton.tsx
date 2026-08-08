@@ -27,14 +27,14 @@ export default function HeroTrailerButton({ trailerUrl }: HeroTrailerButtonProps
         title="Watch Trailer"
       >
         <div className="aspect-video w-full bg-black">
-          <iframe
-            src={trailerUrl.replace('watch?v=', 'embed/')}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          ></iframe>
+            <iframe
+              src={`https://www.youtube.com/embed/${trailerUrl.split('v=')[1]?.split('&')[0] || trailerUrl.split('/').pop()}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
         </div>
       </AccessibleDialog>
     </>

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useAnimation, useMotionValue, PanInfo } from 'framer-motion';
-import { Play } from 'lucide-react';
+import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import AccessibleDialog from './AccessibleDialog';
 
 interface MediaItem {
@@ -123,19 +123,37 @@ export default function MovieCarouselIsland({ media }: MovieCarouselIslandProps)
 
       {/* Navigation Indicators */}
       {media.length > 1 && (
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
-          {media.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                currentIndex === idx ? 'bg-yellow-500 w-6' : 'bg-white/50 hover:bg-white'
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-              aria-current={currentIndex === idx}
-            />
-          ))}
-        </div>
+        <>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); paginate(-1); }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 focus:outline-none"
+            aria-label="Previous media"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); paginate(1); }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 focus:outline-none"
+            aria-label="Next media"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+            {media.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  currentIndex === idx ? 'bg-yellow-500 w-6' : 'bg-white/50 hover:bg-white'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+                aria-current={currentIndex === idx}
+              />
+            ))}
+          </div>
+        </>
       )}
 
       <AccessibleDialog
@@ -146,7 +164,7 @@ export default function MovieCarouselIsland({ media }: MovieCarouselIslandProps)
         <div className="aspect-video w-full bg-black">
           {activeVideo && (
             <iframe
-              src={activeVideo.replace('watch?v=', 'embed/')}
+              src={`https://www.youtube.com/embed/${activeVideo.split('v=')[1]?.split('&')[0] || activeVideo.split('/').pop()}`}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
