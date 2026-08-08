@@ -3,6 +3,8 @@ import React from "react";
 import { Play, Star, Calendar } from "lucide-react";
 import Link from "next/link";
 
+import Image from 'next/image';
+
 const Hero = ({ movies = [] }: { movies?: any[] }) => {
   const [currentMovie, setCurrentMovie] = React.useState(0);
 
@@ -30,12 +32,15 @@ const Hero = ({ movies = [] }: { movies?: any[] }) => {
 
   return (
     <div className="relative h-[90vh] bg-background overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 gradient-mask"
-        style={{
-          backgroundImage: `url('${movie.backdrop || movie.image}')`,
-        }}
-      >
+      <div className="absolute inset-0 transition-all duration-1000 gradient-mask">
+        <Image
+          key={movie.id}
+          src={movie.backdrop || movie.image}
+          alt={movie.title}
+          fill
+          priority
+          className="object-cover bg-center bg-no-repeat"
+        />
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
       </div>
 

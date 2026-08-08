@@ -1,30 +1,27 @@
 import { Review } from './schema';
 import { EventEmitter } from 'events';
-import fs from 'fs';
-import path from 'path';
+// Removed fs and path imports
 
 // Event emitter to handle SSE broadcast
 export const reviewEvents = new EventEmitter();
 
-const DB_PATH = path.join(process.cwd(), 'reviews.json');
-
-// Helper to read DB
-const readDb = (): Record<string, Review[]> => {
-  if (!fs.existsSync(DB_PATH)) {
-    fs.writeFileSync(DB_PATH, JSON.stringify({}), 'utf-8');
-    return {};
+// Use an in-memory store attached to globalThis so it persists across HMR in dev and works in Serverless
+const getDb = (): Record<string, Review[]> => {
+  const globalAny = globalThis as any;
+  if (!globalAny.__reviewsDb) {
+    globalAny.__reviewsDb = {};
   }
-  try {
-    const data = fs.readFileSync(DB_PATH, 'utf-8');
-    return JSON.parse(data);
-  } catch (e) {
-    return {};
-  }
+  return globalAny.__reviewsDb;
 };
 
-// Helper to write DB
+// Helper to read DB (now just returns the in-memory object)
+const readDb = (): Record<string, Review[]> => {
+  return getDb();
+};
+
+// Helper to write DB (no-op since we mutate the object directly)
 const writeDb = (db: Record<string, Review[]>) => {
-  fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), 'utf-8');
+  // In-memory changes are already applied.
 };
 
 export const getReviews = (movieId: string): Review[] => {

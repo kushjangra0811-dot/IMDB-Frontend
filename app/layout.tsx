@@ -4,7 +4,7 @@ import Navbar from '../src/components/Navbar';
 import Providers from './providers';
 
 export const metadata: Metadata = {
-  title: 'IMDb Clone',
+  title: 'IMDb',
   description: 'A Next.js IMDb Clone',
 };
 
