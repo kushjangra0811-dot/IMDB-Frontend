@@ -97,7 +97,7 @@ export default function FilmographyExplorer({ movies }: { movies: MovieCredit[] 
       ) : (
         <div 
           ref={parentRef} 
-          className="h-[500px] overflow-auto border border-border rounded-lg bg-background"
+          className="h-[500px] min-h-[500px] overflow-auto border border-border rounded-lg bg-background relative"
         >
           <div
             style={{

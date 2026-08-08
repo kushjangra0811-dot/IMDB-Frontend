@@ -22,7 +22,7 @@ export default function ActorDetailsPage({ params }: { params: { id: string } })
   return (
     <Suspense
       fallback={
-        <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Skeleton for actor page */}
           <div className="relative h-[400px] mb-8 rounded-xl overflow-hidden bg-muted animate-pulse" />
           <div className="grid md:grid-cols-3 gap-8">

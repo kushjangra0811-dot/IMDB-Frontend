@@ -11,7 +11,7 @@ interface ActorProfileViewProps {
 
 export default function ActorProfileView({ actor }: ActorProfileViewProps) {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Hero Banner */}
       <div className="relative h-[400px] mb-8 rounded-xl overflow-hidden bg-background">
         <div
@@ -20,7 +20,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent" />
         </div>
-        <div className="relative h-full container flex items-end pb-8">
+        <div className="relative h-full w-full flex items-end pb-8 px-4 sm:px-8">
           <div className="flex items-end gap-8">
             <img
               src={actor.image}
@@ -67,10 +67,10 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         }}
       />
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {/* Sidebar */}
-        <div>
-          <div className="sticky top-24 space-y-6">
+      <div className="flex flex-col lg:flex-row gap-8 w-full">
+        {/* Sidebar Info */}
+        <div className="w-full lg:w-1/3 shrink-0">
+          <div className="space-y-6">
             <div className="bg-muted rounded-xl p-6">
               <h2 className="font-semibold mb-4 text-foreground">Personal Info</h2>
               <dl className="space-y-4">
@@ -125,7 +125,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         </div>
 
         {/* Main Content */}
-        <div className="md:col-span-2">
+        <div className="flex flex-col gap-12 w-full lg:w-2/3">
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 text-foreground">Biography</h2>
             <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
