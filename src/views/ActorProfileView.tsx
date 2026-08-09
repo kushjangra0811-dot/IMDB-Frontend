@@ -29,7 +29,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
               loading="eager"
             />
             <div className="min-w-0 flex-1">
-              <h1 className="text-3xl sm:text-4xl font-bold mb-2 sm:mb-4 text-foreground truncate">{actor.name}</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold mb-2 sm:mb-4 text-foreground break-words whitespace-normal">{actor.name}</h1>
               <div className="flex flex-wrap items-center gap-2 sm:gap-6 mt-2 sm:mt-0">
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-yellow-500" />
@@ -80,7 +80,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
                 </div>
                 <div>
                   <dt className="text-muted-foreground">Place of Birth</dt>
-                  <dd className="text-foreground">{actor.birthPlace}</dd>
+                  <dd className="text-foreground break-words whitespace-normal">{actor.birthPlace}</dd>
                 </div>
                 <div>
                   <dt className="text-muted-foreground">Movies</dt>
@@ -128,7 +128,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         <div className="md:col-span-2 flex flex-col gap-8">
           <section>
             <h2 className="text-2xl font-bold mb-4 text-foreground">Biography</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
+            <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line break-words">
               {actor.biography}
             </p>
           </section>
@@ -143,11 +143,11 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
                     className="flex items-center gap-3 bg-muted p-4 rounded-xl"
                   >
                     <Award className="w-5 h-5 text-blue-500 shrink-0" />
-                    <div>
-                      <span className="font-semibold text-foreground">{project.title}</span>
+                    <div className="min-w-0 flex-1">
+                      <span className="font-semibold text-foreground break-words whitespace-normal">{project.title}</span>
                       <span className="mx-2 text-muted-foreground">|</span>
-                      <span className="text-foreground">{project.expectedRelease}</span>
-                      <p className="text-sm text-muted-foreground">
+                      <span className="text-foreground whitespace-nowrap">{project.expectedRelease}</span>
+                      <p className="text-sm text-muted-foreground truncate">
                         Role: {project.role}
                       </p>
                     </div>

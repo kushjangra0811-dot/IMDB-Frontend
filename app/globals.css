@@ -55,8 +55,10 @@
     }
   }
 
-  html {
-    scrollbar-gutter: stable;
+  @media (hover: hover) and (pointer: fine) {
+    html {
+      scrollbar-gutter: stable;
+    }
   }
 
   body {

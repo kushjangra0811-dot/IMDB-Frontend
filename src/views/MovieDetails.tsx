@@ -104,7 +104,7 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
 
             <section className="mb-12">
               <h2 className="text-2xl font-bold mb-4 text-foreground">Overview</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
+              <p className="text-muted-foreground text-lg leading-relaxed break-words">
                 {movie.description || "No overview available."}
               </p>
             </section>
