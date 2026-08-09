@@ -69,7 +69,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
 
       <div className="grid md:grid-cols-3 gap-8">
         {/* Sidebar */}
-        <div>
+        <div className="min-w-0">
           <div className="sticky top-24 space-y-6">
             <div className="bg-muted rounded-xl p-6">
               <h2 className="font-semibold mb-4 text-foreground">Personal Info</h2>
@@ -125,7 +125,7 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
         </div>
 
         {/* Main Content */}
-        <div className="md:col-span-2 flex flex-col gap-8">
+        <div className="md:col-span-2 flex flex-col gap-8 min-w-0">
           <section>
             <h2 className="text-2xl font-bold mb-4 text-foreground">Biography</h2>
             <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line break-words">
