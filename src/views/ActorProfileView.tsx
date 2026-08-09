@@ -21,16 +21,16 @@ export default function ActorProfileView({ actor }: ActorProfileViewProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent" />
         </div>
         <div className="relative h-full w-full flex items-end pb-8 px-4 sm:px-8">
-          <div className="flex items-end gap-8">
+          <div className="flex items-end gap-4 sm:gap-8">
             <img
               src={actor.image}
               alt={actor.name}
-              className="w-48 h-48 rounded-xl object-cover border-4 border-zinc-900"
+              className="w-32 h-32 sm:w-48 sm:h-48 rounded-xl object-cover border-4 border-zinc-900 shrink-0"
               loading="eager"
             />
-            <div>
-              <h1 className="text-4xl font-bold mb-4 text-foreground">{actor.name}</h1>
-              <div className="flex items-center gap-6">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-3xl sm:text-4xl font-bold mb-2 sm:mb-4 text-foreground truncate">{actor.name}</h1>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-6 mt-2 sm:mt-0">
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-yellow-500" />
                   <span className="text-foreground">{actor.stats.avgRating} Average Rating</span>

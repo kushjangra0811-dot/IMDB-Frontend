@@ -87,7 +87,7 @@ export default function ReviewSection({ movieId }: ReviewSectionProps) {
   return (
     <AuthProvider>
       <section className="mt-16 pt-8 border-t border-border">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <h2 className="text-3xl font-bold text-foreground">Community Reviews</h2>
           
           <div className="flex items-center gap-2">

@@ -139,7 +139,7 @@ export default function ReviewEditor({ movieId }: ReviewEditorProps) {
         <span className="text-foreground font-medium">{user.username}</span>
       </div>
       
-      <div className="flex gap-1 mb-4">
+      <div className="flex flex-wrap gap-1 mb-4">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star) => (
           <button
             key={star}

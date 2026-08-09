@@ -68,7 +68,7 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                 </div>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-foreground">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-foreground break-words">
                 {movie.title}
               </h1>
 
@@ -150,7 +150,7 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                         className="w-16 h-16 rounded-full object-cover shrink-0 group-hover:scale-105 transition-transform"
                         loading="lazy"
                       />
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <h3 className="font-semibold text-lg mb-1 truncate text-foreground">
                           {actor.name}
                         </h3>
